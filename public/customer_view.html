@@ -1,0 +1,54 @@
+<md-toolbar class="md-table-toolbar md-default">
+	<div class="md-toolbar-tools">
+		<h2 class="md-title">{{header_text}}</h2>
+		<div flex></div>
+		<md-button class="md-icon-button" ng-click="listGo()">
+			<md-icon><i class="material-icons md-24" aria-label="Fechar">clear</i></md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
+<md-card flex style="overflow: auto;">	
+	<form name="form_customer">
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Cliente</label>
+			<input ng-model="customer.name" ng-required="true">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin"> 
+			<label>Telefone</label>
+			<input ng-model="customer.phone" mask="(99) 9?9999-9999">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Email</label>
+			<input ng-model="customer.email" type="email">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>CEP</label>
+			<input ng-model="customer.cep" mask="99999-999" ng-blur="getCep()">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Número</label>
+			<input ng-model="customer.number">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Logradouro</label>
+			<input ng-model="customer.adress">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Bairro</label>
+			<input ng-model="customer.district">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Complemento</label>
+			<input ng-model="customer.complement">
+		</md-input-container>
+		<md-input-container class="md-block alles-bottom-margin">
+			<label>Anotações</label>
+			<textarea ng-model="customer.note" md-maxlength="250" rows="5" md-select-on-focus=""></textarea>
+		</md-input-container>
+		<div layout="row" layout-align="end center">
+			<md-button class="md-raised" ng-click="listGo()">Voltar</md-button>
+			<md-button class="md-raised md-warn" ng-click="delete()" ng-if="customertId != 0" >Excluir</md-button>
+			<md-button class="md-raised md-primary" ng-click="form_customer.$invalid || save()" ng-disabled="form_customer.$invalid || loading">Salvar</md-button>
+		</div>
+	</form>
+</md-card>
